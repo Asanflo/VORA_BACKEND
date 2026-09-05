@@ -15,3 +15,4 @@ class EscrowRead(BaseModel):
     held_at: Optional[datetime] = None
     released_at: Optional[datetime] = None
     refunded_at: Optional[datetime] = None
+

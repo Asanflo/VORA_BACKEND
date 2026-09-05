@@ -2,6 +2,7 @@ from typing import Optional, List
 from datetime import datetime
 from sqlmodel import SQLModel, Field
 import json
+from app.core.security import utc_now
 
 class POIBase(SQLModel):
     name: str = Field(index=True, description="Nom officiel du repère populaire (ex: Carrefour EMIA)")
@@ -16,7 +17,7 @@ class POIBase(SQLModel):
 class POI(POIBase, table=True):
     __tablename__ = "pois"
     id: Optional[int] = Field(default=None, primary_key=True)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
 
     @property
     def aliases(self) -> List[str]:

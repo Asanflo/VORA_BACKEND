@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 from app.core.database import get_session
-from app.core.security import generate_oral_pin, generate_share_token
+from app.core.security import generate_oral_pin, generate_share_token, utc_now
 from app.models.user import User, UserRole, DriverProfile
 from app.models.ride import Ride, RideStatus, RideType, PaymentMode
 from app.models.escrow import EscrowTransaction, EscrowStatus
@@ -80,7 +80,7 @@ async def create_ride(
         is_locked=False,
         secret_pin=pin,
         share_token=share_token,
-        created_at=datetime.utcnow()
+        created_at=utc_now()
     )
     session.add(ride)
     await session.commit()
@@ -195,7 +195,7 @@ async def start_ride(
 
     ride.status = RideStatus.STARTED
     ride.is_locked = True
-    ride.started_at = datetime.utcnow()
+    ride.started_at = utc_now()
     session.add(ride)
     await session.commit()
     await session.refresh(ride)

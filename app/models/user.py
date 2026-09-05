@@ -3,6 +3,7 @@ from datetime import datetime
 from sqlmodel import SQLModel, Field, Relationship
 import enum
 import json
+from app.core.security import utc_now
 
 class UserRole(str, enum.Enum):
     PASSENGER = "PASSENGER"
@@ -23,7 +24,7 @@ class UserBase(SQLModel):
 class User(UserBase, table=True):
     __tablename__ = "users"
     id: Optional[int] = Field(default=None, primary_key=True)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
     
     # Relationships
     driver_profile: Optional["DriverProfile"] = Relationship(back_populates="user", sa_relationship_kwargs={"uselist": False})
@@ -50,7 +51,7 @@ class DriverProfile(DriverProfileBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     user_id: int = Field(foreign_key="users.id", unique=True, index=True)
     badges_json: str = Field(default='["NOUVEAU_CHAUFFEUR"]', description="JSON array des badges de confiance")
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
 
     # Relationships
     user: Optional[User] = Relationship(back_populates="driver_profile")

@@ -54,3 +54,4 @@ class AuthResponse(BaseModel):
     token_type: str = "bearer"
     user: UserRead
     driver_profile: Optional[DriverProfileRead] = None
+

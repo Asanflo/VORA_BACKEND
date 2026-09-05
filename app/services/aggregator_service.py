@@ -7,6 +7,7 @@ from app.models.escrow import EscrowTransaction, EscrowStatus, PaymentProvider
 from app.models.ride import Ride, RideStatus, PaymentMode
 from app.models.user import DriverProfile
 from app.core.config import settings
+from app.core.security import utc_now
 
 class PaymentAggregatorService:
     """
@@ -44,7 +45,7 @@ class PaymentAggregatorService:
             provider=provider,
             aggregator_reference=aggregator_ref,
             status=EscrowStatus.HELD,
-            held_at=datetime.utcnow()
+            held_at=utc_now()
         )
         session.add(transaction)
         await session.commit()
@@ -96,12 +97,12 @@ class PaymentAggregatorService:
         # Succès : Libération instantanée des fonds du séquestre de l'agrégateur
         transaction.status = EscrowStatus.RELEASED
         transaction.driver_phone = driver_phone
-        transaction.released_at = datetime.utcnow()
+        transaction.released_at = utc_now()
         session.add(transaction)
 
         # Clôture de la course
         ride.status = RideStatus.COMPLETED
-        ride.completed_at = datetime.utcnow()
+        ride.completed_at = utc_now()
         session.add(ride)
 
         await session.commit()
@@ -129,11 +130,11 @@ class PaymentAggregatorService:
 
         if transaction and transaction.status == EscrowStatus.HELD:
             transaction.status = EscrowStatus.REFUNDED
-            transaction.refunded_at = datetime.utcnow()
+            transaction.refunded_at = utc_now()
             session.add(transaction)
 
         ride.status = RideStatus.CANCELLED
-        ride.cancelled_at = datetime.utcnow()
+        ride.cancelled_at = utc_now()
         session.add(ride)
 
         await session.commit()
@@ -162,7 +163,7 @@ class PaymentAggregatorService:
         commission = round(ride.agreed_price * (settings.VORA_COMMISSION_PERCENTAGE / 100.0), 2)
         ride.commission_amount = commission
         ride.status = RideStatus.COMPLETED
-        ride.completed_at = datetime.utcnow()
+        ride.completed_at = utc_now()
         session.add(ride)
 
         if driver_profile:

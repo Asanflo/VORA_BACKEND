@@ -2,6 +2,7 @@ from typing import Optional
 from datetime import datetime
 from sqlmodel import SQLModel, Field
 import enum
+from app.core.security import utc_now
 
 class EscrowStatus(str, enum.Enum):
     PENDING_HOLD = "PENDING_HOLD"
@@ -29,4 +30,4 @@ class EscrowTransaction(SQLModel, table=True):
     held_at: Optional[datetime] = None
     released_at: Optional[datetime] = None
     refunded_at: Optional[datetime] = None
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)

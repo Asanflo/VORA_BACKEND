@@ -29,3 +29,4 @@ async def test_nearest_poi_reverse_geocoding(client):
     assert data["poi"]["name"] == "Carrefour EMIA"
     assert data["distance_meters"] < 50.0
     assert "Carrefour EMIA" in data["human_readable_label"]
+

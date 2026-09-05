@@ -60,3 +60,4 @@ async def test_cash_payment_workflow_and_lock(client):
     assert complete_resp.status_code == 200
     assert complete_resp.json()["status"] == "COMPLETED"
     assert "commission" in complete_resp.json()["message"].lower()
+

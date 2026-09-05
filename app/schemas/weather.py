@@ -30,3 +30,4 @@ class WeatherAlertRead(BaseModel):
     is_active: bool
     description: Optional[str] = None
     created_at: datetime
+

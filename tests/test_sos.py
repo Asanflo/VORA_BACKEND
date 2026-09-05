@@ -43,3 +43,4 @@ async def test_sos_trigger_and_public_live_tracking(client):
     assert track_data["is_sos_active"] is True
     assert track_data["pickup_name"] == "Carrefour Bastos"
     assert track_data["dropoff_name"] == "Hôpital Général"
+

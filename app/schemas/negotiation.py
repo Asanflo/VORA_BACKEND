@@ -19,3 +19,4 @@ class NegotiationOfferRead(BaseModel):
     driver_eta_minutes: int
     status: OfferStatus
     created_at: datetime
+

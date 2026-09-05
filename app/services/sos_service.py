@@ -5,6 +5,7 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from app.models.ride import Ride
 from app.models.user import User
 from app.schemas.sos import SOSAlertRead
+from app.core.security import utc_now
 
 class SOSService:
     EMERGENCY_SERVICES = [
@@ -29,7 +30,7 @@ class SOSService:
         - Génère et simule l'envoi de SMS de détresse avec lien de suivi public
         """
         ride.is_sos_active = True
-        ride.sos_activated_at = datetime.utcnow()
+        ride.sos_activated_at = utc_now()
         session.add(ride)
         await session.commit()
         await session.refresh(ride)

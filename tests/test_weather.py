@@ -26,3 +26,4 @@ async def test_weather_hazards_and_fare_multiplier(client):
     # La majoration météo doit être appliquée (> 1.0)
     assert est["weather_multiplier"] >= 1.20
     assert est["weather_surcharge_amount"] > 0
+

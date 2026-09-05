@@ -63,3 +63,4 @@ class ConnectionManager:
             self.disconnect_global(dead_ws)
 
 manager = ConnectionManager()
+

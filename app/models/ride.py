@@ -3,6 +3,7 @@ from datetime import datetime
 from sqlmodel import SQLModel, Field, Relationship
 import enum
 import secrets
+from app.core.security import utc_now
 
 class PaymentMode(str, enum.Enum):
     MOMO = "MOMO"
@@ -67,7 +68,7 @@ class Ride(RideBase, table=True):
     commission_amount: float = Field(default=0.0)
 
     # Dates de cycle de vie
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
     started_at: Optional[datetime] = None
     completed_at: Optional[datetime] = None
     cancelled_at: Optional[datetime] = None

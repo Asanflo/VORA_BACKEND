@@ -35,3 +35,4 @@ async def test_ai_voice_pidgin_and_camfranglais_parsing(client):
     data_c = resp_camfranglais.json()
     assert data_c["dropoff_poi"] is not None
     assert "Soleil" in data_c["dropoff_poi"]["name"]
+

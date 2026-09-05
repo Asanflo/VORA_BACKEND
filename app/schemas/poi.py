@@ -26,3 +26,4 @@ class POINearestResponse(BaseModel):
     poi: POIRead
     distance_meters: float
     human_readable_label: str  # ex: "À 45m de Carrefour EMIA"
+

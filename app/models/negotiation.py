@@ -2,6 +2,7 @@ from typing import Optional
 from datetime import datetime
 from sqlmodel import SQLModel, Field
 import enum
+from app.core.security import utc_now
 
 class OfferStatus(str, enum.Enum):
     PENDING = "PENDING"
@@ -17,4 +18,4 @@ class NegotiationOffer(SQLModel, table=True):
     offered_price: float = Field(description="Montant proposé par le chauffeur en FCFA")
     driver_eta_minutes: int = Field(default=5, description="Temps estimé d'arrivée du chauffeur")
     status: OfferStatus = Field(default=OfferStatus.PENDING)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)

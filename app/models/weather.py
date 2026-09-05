@@ -2,6 +2,7 @@ from typing import Optional
 from datetime import datetime
 from sqlmodel import SQLModel, Field
 import enum
+from app.core.security import utc_now
 
 class WeatherAlertType(str, enum.Enum):
     HEAVY_RAIN = "HEAVY_RAIN"           # Pluie battante
@@ -28,4 +29,4 @@ class WeatherAlert(SQLModel, table=True):
     eta_penalty_minutes: int = Field(default=10, description="Délai supplémentaire estimé en minutes")
     is_active: bool = Field(default=True, index=True)
     description: Optional[str] = Field(default=None)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)

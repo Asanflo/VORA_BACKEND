@@ -88,3 +88,4 @@ async def root():
         "redoc": "/redoc",
         "health": "/health"
     }
+

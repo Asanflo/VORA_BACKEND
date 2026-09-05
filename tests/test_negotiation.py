@@ -51,3 +51,4 @@ async def test_negotiation_counter_offer_and_acceptance(client):
     ride_updated = accept_resp.json()
     assert ride_updated["agreed_price"] == 1500.0
     assert ride_updated["status"] == "ACCEPTED"
+

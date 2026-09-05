@@ -16,3 +16,4 @@ class VoiceIntentResponse(BaseModel):
     dropoff_poi: Optional[POIRead] = None
     suggested_price_fcfa: float
     assistant_reply: str
+

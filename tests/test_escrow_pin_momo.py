@@ -88,3 +88,4 @@ async def test_full_momo_escrow_and_oral_pin_workflow(client):
     assert escrow_final.status_code == 200
     assert escrow_final.json()["status"] == "RELEASED"
     assert escrow_final.json()["driver_net_amount"] > 0
+

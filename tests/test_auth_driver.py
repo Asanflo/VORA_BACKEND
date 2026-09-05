@@ -58,3 +58,4 @@ async def test_driver_registration_with_mandatory_documents(client):
     assert prof["is_verified"] is True
     assert prof["taxi_door_number"] == "YDE-8899"
     assert prof["vehicle_plate"] == "LT 991 BB"
+

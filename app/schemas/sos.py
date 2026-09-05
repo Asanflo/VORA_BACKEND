@@ -36,3 +36,4 @@ class LiveTrackingResponse(BaseModel):
     driver_current_longitude: Optional[float] = None
     created_at: datetime
     started_at: Optional[datetime] = None
+

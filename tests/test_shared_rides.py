@@ -59,3 +59,4 @@ async def test_shared_rides_automatic_grouping(client):
     ride1_check = await client.get(f"/api/v1/rides/{ride1_id}", headers=headers_p1)
     assert ride1_check.status_code == 200
     assert ride1_check.json()["shared_group_id"] == ride2_data["shared_group_id"]
+

@@ -16,3 +16,4 @@ api_v1_router.include_router(tracking.router)
 api_v1_router.include_router(ai_assistant.router)
 api_v1_router.include_router(weather_alerts.router)
 api_v1_router.include_router(drivers.router)
+
