@@ -10,30 +10,30 @@ class Settings(BaseSettings):
     DEBUG: bool = True
 
     # Database: SupaBase (PostgreSQL) or SQLite
-    DATABASE_URL: str = "sqlite+aiosqlite:///./vora.db"
+    DATABASE_URL: str 
     
     # SupaBase Credentials
-    SUPABASE_URL: str = "https://your-project.supabase.co"
-    SUPABASE_KEY: str = "your-anon-or-service-key"
-    SUPABASE_STORAGE_BUCKET: str = "driver-documents"
+    SUPABASE_URL: str 
+    SUPABASE_KEY: str 
+    SUPABASE_STORAGE_BUCKET: str 
 
     # Security & Auth
-    SECRET_KEY: str = "vora_super_secret_jwt_key_cameroon_taxi_hackathon_2026"
-    ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 43200  # 30 days
+    SECRET_KEY: str 
+    ALGORITHM: str  
+    ACCESS_TOKEN_EXPIRE_MINUTES: int  
 
     # Payment Aggregator (Escrow MoMo / OM)
-    PAYMENT_AGGREGATOR_MODE: str = "mock"  # "mock", "campay", "notchpay", "cinetpay"
-    PAYMENT_AGGREGATOR_API_KEY: str = "sandbox_key"
-    PAYMENT_AGGREGATOR_API_SECRET: str = "sandbox_secret"
-    VORA_COMMISSION_PERCENTAGE: float = 10.0  # 10% commission on rides
+    PAYMENT_AGGREGATOR_MODE: str 
+    PAYMENT_AGGREGATOR_API_KEY: str 
+    PAYMENT_AGGREGATOR_API_SECRET: str 
+    VORA_COMMISSION_PERCENTAGE: float 
 
     # AI Voice (Gemini)
-    GEMINI_API_KEY: str = ""
-    GEMINI_MODEL: str = "gemini-2.5-flash"
+    GEMINI_API_KEY: str 
+    GEMINI_MODEL: str 
 
     # CORS
-    ALLOWED_ORIGINS: Union[List[str], str] = ["*"]
+    ALLOWED_ORIGINS: Union[List[str], str] 
 
     # Local uploads fallback directory
     UPLOAD_DIR: str = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "uploads")

@@ -18,10 +18,16 @@ engine_kwargs = {"echo": False, "future": True}
 if "sqlite" in database_url:
     engine_kwargs["connect_args"] = {"check_same_thread": False}
 else:
-    # Pour Supabase PostgreSQL (Pooler ou Direct)
+    # Pour Supabase PostgreSQL via le pooler (Supavisor/pgbouncer en mode transaction) :
+    # les prepared statements nommés persistants ne sont pas supportés, il faut les désactiver.
     engine_kwargs["pool_pre_ping"] = True
     engine_kwargs["pool_size"] = 10
     engine_kwargs["max_overflow"] = 20
+    engine_kwargs["connect_args"] = {
+        "statement_cache_size": 0,
+        "prepared_statement_cache_size": 0,
+        "ssl":"require",
+    }
 
 engine = create_async_engine(database_url, **engine_kwargs)
 
