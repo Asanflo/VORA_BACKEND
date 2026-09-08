@@ -28,8 +28,8 @@ app = FastAPI(
         "Repères locaux camerounais, Séquestre Mobile Money, Covoiturage et Sécurité SOS."
     ),
     lifespan=lifespan,
-    docs_url="/docs",
-    redoc_url="/redoc"
+    docs_url="/docs", #if settings.ENVIRONMENT != "production" else None
+    redoc_url="/redoc" #if settings.ENVIRONMENT != "production" else None
 )
 
 # Configuration CORS pour Flutter (Web, iOS, Android Emulateur 10.0.2.2, Appareil Physique)

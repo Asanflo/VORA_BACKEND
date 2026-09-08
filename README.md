@@ -1,4 +1,3 @@
-# 🚖 VORA Mobility Backend (FastAPI + SQLModel + SupaBase)
 # 🚖 VORA Mobility Backend — API REST & WebSockets (FastAPI + SQLModel + SupaBase)
 
 Backend complet et performant conçu pour alimenter l'application mobile Flutter de **VORA**, la plateforme de mobilité urbaine et de covoiturage en taxi jaune adaptée aux réalités du Cameroun (Yaoundé, Douala, Bafoussam, etc.).
